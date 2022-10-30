@@ -14,6 +14,8 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 import java.lang.reflect.Type;
 import java.util.concurrent.ExecutionException;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * This client send its message to server which in turn send it to common topic for communication.
  */
@@ -37,6 +39,7 @@ public class ClientOne {
     }
 }
 
+@Slf4j
 class ClientOneSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
@@ -46,6 +49,6 @@ class ClientOneSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void handleFrame(StompHeaders headers, Object payload) {
-        System.out.println("Received : " + ((OutgoingMessage) payload).content());
+        log.info("Received : {}", ((OutgoingMessage) payload).content());
     }
 }

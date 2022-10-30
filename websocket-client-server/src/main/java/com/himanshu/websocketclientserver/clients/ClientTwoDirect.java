@@ -13,6 +13,8 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 import java.lang.reflect.Type;
 import java.util.concurrent.ExecutionException;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * This client send its message directly to common topic for communication.
  */
@@ -36,6 +38,7 @@ public class ClientTwoDirect {
     }
 }
 
+@Slf4j
 class ClientTwoDirectSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
@@ -45,6 +48,6 @@ class ClientTwoDirectSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void handleFrame(StompHeaders headers, Object payload) {
-        System.out.println("Received : " + ((IncomingMessage) payload).name());
+        log.info("Received : {}", ((IncomingMessage) payload).name());
     }
 }
