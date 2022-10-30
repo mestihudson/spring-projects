@@ -45,6 +45,6 @@ class ClientTwoDirectSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void handleFrame(StompHeaders headers, Object payload) {
-        System.out.println("Received : " + ((IncomingMessage) payload).getName());
+        System.out.println("Received : " + ((IncomingMessage) payload).name());
     }
 }

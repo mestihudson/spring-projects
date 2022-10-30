@@ -11,6 +11,6 @@ public class ServerController {
     @SendTo("/topic/messages")
     public OutgoingMessage processMessage(IncomingMessage incomingMessage) throws Exception{
         Thread.sleep(1000);
-        return new OutgoingMessage("Hello " + incomingMessage.getName());
+        return new OutgoingMessage("Hello " + incomingMessage.name());
     }
 }
