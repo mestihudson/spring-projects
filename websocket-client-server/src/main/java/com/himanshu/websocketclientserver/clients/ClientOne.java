@@ -38,7 +38,7 @@ public class ClientOne {
         StompSession session = sessionAsync.get();
         session.subscribe("/topic/messages", clientOneSessionHandler);
         while (true) {
-            session.send("/app/process-message", new IncomingMessage("Himanshu " + System.currentTimeMillis()));
+            session.send("/app/process-message", new IncomingMessage("%s %s".formatted("Himanshu", System.currentTimeMillis())));
             Thread.sleep(2000);
         }
     }
