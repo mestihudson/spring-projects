@@ -22,6 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ClientOne {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        if (args.length == 0) {
+            throw new RuntimeException("Required args not supplied");
+        }
+        String name = args[0];
         WebSocketClient client = new StandardWebSocketClient();
 
         WebSocketStompClient stompClient = new WebSocketStompClient(client);
