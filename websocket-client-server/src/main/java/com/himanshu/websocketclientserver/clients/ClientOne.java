@@ -32,8 +32,9 @@ public class ClientOne {
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
         ClientOneSessionHandler clientOneSessionHandler = new ClientOneSessionHandler();
+        String URI = "ws://localhost:8080/websocket-server";
         ListenableFuture<StompSession> sessionAsync =
-                stompClient.connect("ws://localhost:8080/websocket-server", clientOneSessionHandler);
+                stompClient.connect(URI, clientOneSessionHandler);
         StompSession session = sessionAsync.get();
         session.subscribe("/topic/messages", clientOneSessionHandler);
         while (true) {
